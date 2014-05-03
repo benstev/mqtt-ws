@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>Test Bridge</title>
+
+</head>
+
+  <body>
+
+	<div>
+	<h1>Test mqtt bridge</h1>
+	</div>
+	
+
+	<h1>Real Time</h1>
+    <script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript" src="lib/jquery/jquery.js"></script>
+	
+	<script type="text/javascript">
+	  var socket = io.connect('http://localhost:4000');
+		socket.on('connect', function () {
+		  socket.on('mqtt', function (msg) {
+			var elmarr=msg.topic.split("/");
+			var elm=elmarr[3];
+			console.log(msg.topic+' '+msg.payload);
+			$('#'.concat(elm)).html(msg.payload);
+		 });
+		 socket.emit('subscribe',{topic:'/sensor/OTGW/returntemp'});
+		});
+	</script>
+	<table class="tablegv" style="width: 500px;">
+	<tbody>
+	<tr class="tablegvHeader">
+	<td colspan="2"><center>Status</center></td>
+	</tr>
+	<tr>
+	<td>Return temp</td>
+	<td id="returntemp"></td>
+	</tr>
+	</tbody>
+	</table>
+	
+  </body>
+</html>

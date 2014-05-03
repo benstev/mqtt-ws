@@ -1,0 +1,10 @@
+{
+  "name": "mqtt-ws",
+  "version": "0.0.1",
+  "license": "MIT",
+  "dependencies": {
+    "connect": "*",
+    "socket.io": "~0.9.16",
+    "mqtt": "~0.3.7"
+  }
+}
