@@ -5,6 +5,7 @@
   "dependencies": {
     "connect": "*",
     "socket.io": "~0.9.16",
-    "mqtt": "~0.3.7"
+    "mqtt": "~0.3.7",
+	"log4js":"*"
   }
 }
