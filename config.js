@@ -1,12 +1,20 @@
 var config = {
 
+	loggingLevel: 'DEBUG',
+
 	http: {
 		port: 5000
 	},
 	
 	mqtt: {
-		port: 1883,
-		hostname: '192.168.0.7'
+		port: <port here>,
+		hostname: '<hostname here>',
+		options:
+		{
+			clientId: 'edmon_reader',
+			username: '<username here>',
+			password: '<password here>'
+		}
 	}
 }
 

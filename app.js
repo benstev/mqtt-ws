@@ -2,7 +2,7 @@ var config = require('./config');
 
 var log4js = require('log4js');
 var logger = log4js.getLogger();
-logger.setLevel('INFO');
+logger.setLevel(config.loggingLevel);
 
 var path = require('path');
 var http = require('http');
@@ -18,7 +18,7 @@ io.set('log level', 1); // reduce logging
 io.sockets.on('connection', function (socket) {
 	logger.info('New WS client connection : %s', socket.id);
 
-	var mqtt = require('mqtt').createClient(config.mqtt.port, config.mqtt.hostname);
+	var mqtt = require('mqtt').createClient(config.mqtt.port, config.mqtt.hostname, config.mqtt.options);
 	
 	mqtt.on('connect', function(){
 		logger.info("Connected to MQTT server <%s> on port %d for WS client %s", config.mqtt.hostname, config.mqtt.port, socket.id);
